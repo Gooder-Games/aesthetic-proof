@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS public.api_keys (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users NOT NULL,
   key TEXT UNIQUE NOT NULL,
-  credits_left INTEGER DEFAULT 0 CHECK (credits_left >= 0),
+  credits_left INTEGER DEFAULT 25 CHECK (credits_left >= 0),
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );

@@ -31,6 +31,10 @@ export async function POST(request: Request) {
        return NextResponse.json({ error: "Missing Metadata" }, { status: 400 });
     }
 
+    // Extract how many credits to add (default to 10000 for legacy compatibility)
+    const creditsToAddStr = session.metadata?.creditsToAdd;
+    const incrementAmount = creditsToAddStr ? parseInt(creditsToAddStr, 10) : 10000;
+
     // Use Service Role Key to bypass RLS for credit update
     const supabaseAdmin = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -44,12 +48,12 @@ export async function POST(request: Request) {
     );
 
     // Increment credits in api_keys table
-    console.log(`Fulfilling checkout for user: ${userId}`);
+    console.log(`Fulfilling checkout for user: ${userId}, credits: ${incrementAmount}`);
     
     try {
       const { data, error: rpcError } = await supabaseAdmin.rpc("increment_credits", {
            user_id_param: userId,
-           increment_amount: 10000
+           increment_amount: incrementAmount
       });
 
       if (rpcError) {
@@ -57,7 +61,7 @@ export async function POST(request: Request) {
          return NextResponse.json({ error: rpcError.message }, { status: 500 });
       }
       
-      console.log(`Successfully added 10,000 credits to user ${userId}`);
+      console.log(`Successfully added ${incrementAmount} credits to user ${userId}`);
     } catch (err: any) {
       console.error("Critical Webhook Processing Error:", err);
       return NextResponse.json({ error: "Internal processing error" }, { status: 500 });

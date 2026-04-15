@@ -122,19 +122,9 @@ export default async function DashboardPage() {
               <span className="text-muted-foreground ml-2">credits</span>
             </div>
 
-            <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               One credit is deducted for every image generated via the API.
             </p>
-
-            <form action="/api/checkout" method="POST">
-                <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-2xl bg-foreground py-4 text-sm font-bold text-background transition-all hover:opacity-90 hover:scale-[1.02] shadow-lg"
-                >
-                <ShoppingCart size={18} />
-                Buy 10,000 Credits ($19)
-                </button>
-            </form>
           </div>
 
           <div className="glass rounded-3xl border border-border p-6 shadow-xl bg-indigo-500/5">
@@ -145,6 +135,81 @@ export default async function DashboardPage() {
              <p className="text-sm text-muted-foreground leading-relaxed">
                 Want to automate your social proof? Check our API documentation to see how to integrate in minutes.
              </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing Tiers Section */}
+      <div className="mt-16">
+        <div className="mb-8 text-center sm:text-left">
+          <h2 className="text-2xl font-bold mb-2">Buy Credits</h2>
+          <p className="text-muted-foreground">Select a package to refill your account. No expiring credits.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Starter Tier */}
+          <div className="glass rounded-3xl border border-border p-8 shadow-sm hover:shadow-lg transition-all flex flex-col bg-card/10">
+            <h3 className="text-lg font-semibold text-muted-foreground mb-2">Starter</h3>
+            <div className="mb-4">
+              <span className="text-4xl font-extrabold">$5</span>
+            </div>
+            <p className="font-semibold mb-6 flex-1 text-foreground/90">500 Images</p>
+            <ul className="space-y-3 mb-8 text-sm text-muted-foreground flex-1">
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Standard Presets</li>
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Email Support</li>
+            </ul>
+            <form action="/api/checkout" method="POST" className="mt-auto">
+              {/* @ts-ignore */}
+              <input type="hidden" name="tier" value="starter" />
+              <button type="submit" className="w-full rounded-2xl border-2 border-border bg-transparent py-3 font-bold transition-all hover:bg-secondary/50">
+                Buy 500 Credits
+              </button>
+            </form>
+          </div>
+
+          {/* Pro Tier (Anchor) */}
+          <div className="rounded-3xl border-2 border-primary p-8 shadow-xl relative flex flex-col bg-gradient-to-b from-primary/10 to-background transform md:-translate-y-4">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+              Most Popular
+            </div>
+            <h3 className="text-lg font-semibold text-primary mb-2">Pro</h3>
+            <div className="mb-4">
+              <span className="text-4xl font-extrabold">$19</span>
+            </div>
+            <p className="font-semibold mb-6 flex-1 text-foreground/90">2,500 Images</p>
+            <ul className="space-y-3 mb-8 text-sm text-foreground/80 flex-1">
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Better Value (+400 credits)</li>
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Universal Styling API</li>
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Priority Support</li>
+            </ul>
+            <form action="/api/checkout" method="POST" className="mt-auto">
+              {/* @ts-ignore */}
+              <input type="hidden" name="tier" value="pro" />
+              <button type="submit" className="w-full rounded-2xl bg-primary py-3 font-bold text-white transition-all hover:bg-primary/90 hover:scale-[1.02] shadow-lg shadow-primary/25">
+                Buy 2,500 Credits
+              </button>
+            </form>
+          </div>
+
+          {/* Scale Tier */}
+          <div className="glass rounded-3xl border border-border p-8 shadow-sm hover:shadow-lg transition-all flex flex-col bg-card/10">
+            <h3 className="text-lg font-semibold text-muted-foreground mb-2">Scale</h3>
+            <div className="mb-4">
+              <span className="text-4xl font-extrabold">$59</span>
+            </div>
+            <p className="font-semibold mb-6 flex-1 text-foreground/90">10,000 Images</p>
+            <ul className="space-y-3 mb-8 text-sm text-muted-foreground flex-1">
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Best Value (+2500 credits)</li>
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Universal Styling API</li>
+              <li className="flex gap-2 items-center"><CheckCircle2 size={16} className="text-primary" /> Dedicated Support</li>
+            </ul>
+            <form action="/api/checkout" method="POST" className="mt-auto">
+              {/* @ts-ignore */}
+              <input type="hidden" name="tier" value="scale" />
+              <button type="submit" className="w-full rounded-2xl border-2 border-border bg-transparent py-3 font-bold transition-all hover:bg-secondary/50">
+                Buy 10,000 Credits
+              </button>
+            </form>
           </div>
         </div>
       </div>
