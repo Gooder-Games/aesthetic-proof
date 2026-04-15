@@ -2,14 +2,24 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { signup } from "@/app/auth/actions";
 import { Sparkles, ArrowRight, AlertCircle, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function SignupPage() {
+function ErrorMessage() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
+  if (!error) return null;
+  return (
+    <div className="mb-6 flex items-center gap-3 rounded-xl bg-destructive/10 p-4 text-sm font-medium text-destructive animate-fade-in border border-destructive/20">
+      <AlertCircle size={18} />
+      {error}
+    </div>
+  );
+}
 
+export default function SignupPage() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
       <motion.div
@@ -27,12 +37,9 @@ export default function SignupPage() {
         </div>
 
         <div className="glass rounded-3xl p-8 border border-border shadow-2xl">
-          {error && (
-            <div className="mb-6 flex items-center gap-3 rounded-xl bg-destructive/10 p-4 text-sm font-medium text-destructive animate-fade-in border border-destructive/20">
-              <AlertCircle size={18} />
-              {error}
-            </div>
-          )}
+          <Suspense>
+            <ErrorMessage />
+          </Suspense>
 
           <form action={signup} className="space-y-6">
             <div className="space-y-2">
@@ -79,8 +86,8 @@ export default function SignupPage() {
           </form>
 
           <div className="mt-8 text-center text-sm text-muted-foreground">
-             <p className="mb-4">No credit card required to start generating.</p>
-             <p>
+            <p className="mb-4">No credit card required to start generating.</p>
+            <p>
               Already have an account?{" "}
               <Link href="/login" className="font-bold text-primary hover:underline">
                 Sign in

@@ -2,14 +2,24 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { login } from "@/app/auth/actions";
 import { Sparkles, ArrowRight, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function LoginPage() {
+function ErrorMessage() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
+  if (!error) return null;
+  return (
+    <div className="mb-6 flex items-center gap-3 rounded-xl bg-destructive/10 p-4 text-sm font-medium text-destructive animate-fade-in border border-destructive/20">
+      <AlertCircle size={18} />
+      {error}
+    </div>
+  );
+}
 
+export default function LoginPage() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
       <motion.div
@@ -27,12 +37,9 @@ export default function LoginPage() {
         </div>
 
         <div className="glass rounded-3xl p-8 border border-border shadow-2xl">
-          {error && (
-            <div className="mb-6 flex items-center gap-3 rounded-xl bg-destructive/10 p-4 text-sm font-medium text-destructive animate-fade-in border border-destructive/20">
-              <AlertCircle size={18} />
-              {error}
-            </div>
-          )}
+          <Suspense>
+            <ErrorMessage />
+          </Suspense>
 
           <form action={login} className="space-y-6">
             <div className="space-y-2">
@@ -78,7 +85,7 @@ export default function LoginPage() {
 
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/signup" className="font-bold text-primary hover:underline">
                 Sign up for free
               </Link>

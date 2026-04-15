@@ -83,7 +83,7 @@ and hit a single endpoint to produce an image.
 │   │   └── theme-switcher.tsx     # Interactive preset showcase on landing page
 │   ├── lib/
 │   │   └── stripe.ts              # Stripe client initialisation
-│   ├── middleware.ts              # Route protection + API key validation + credit check
+│   ├── proxy.ts                   # Route protection + API key validation + credit check (Next.js 16: renamed from middleware.ts)
 │   └── utils/supabase/
 │       ├── client.ts              # Browser Supabase client
 │       └── server.ts              # Server Supabase client (cookie-based)
