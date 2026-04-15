@@ -7,9 +7,9 @@ info:
     Pass in JSON review data and receive a fully styled PNG image to embed in your app.
   contact:
     name: Support
-    url: https://aesthetic-proof.com
+    url: https://aesthetic-proof.gooder.games
 servers:
-  - url: 'https://aesthetic-proof.com/api/v1'
+  - url: 'https://aesthetic-proof.gooder.games/api/v1'
     description: Production Edge API
 paths:
   /generate:

@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Aesthetic Proof Team" }],
   creator: "Aesthetic Proof",
   publisher: "Aesthetic Proof",
-  metadataBase: new URL("https://aesthetic-proof.com"),
+  metadataBase: new URL("https://aesthetic-proof.gooder.games"),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "Aesthetic Proof | Generative Review Images API",
     description: "Generate stunning review images for your SaaS with a simple API call.",
-    url: "https://aesthetic-proof.com",
+    url: "https://aesthetic-proof.gooder.games",
     siteName: "Aesthetic Proof",
     images: [
       {

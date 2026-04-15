@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aesthetic-proof.com"; // Replace with your production domain
+  const baseUrl = "https://aesthetic-proof.gooder.games"; // Replace with your production domain
 
   return [
     {

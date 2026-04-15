@@ -42,7 +42,7 @@ export default function DocsPage() {
             <div className="glass rounded-2xl border border-border p-6 mb-4 flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <span className="bg-primary text-white text-xs font-bold px-2 py-1 rounded">POST</span>
-                <code className="text-sm font-mono font-bold break-all">https://aesthetic-proof.com/api/v1/generate</code>
+                <code className="text-sm font-mono font-bold break-all">https://aesthetic-proof.gooder.games/api/v1/generate</code>
               </div>
               <span className="text-sm font-bold text-muted-foreground whitespace-nowrap hidden sm:block">Consumes 1 Credit</span>
             </div>
@@ -174,7 +174,7 @@ export default function DocsPage() {
                  <li><strong className="text-foreground">Trigger:</strong> Set up your trigger step (e.g., "New Typeform Entry").</li>
                  <li><strong className="text-foreground">Action:</strong> Add a <strong>Webhooks by Zapier</strong> step and choose <strong>Custom Request</strong>.</li>
                  <li><strong className="text-foreground">Method:</strong> <code className="bg-secondary px-1 rounded">POST</code></li>
-                 <li><strong className="text-foreground">URL:</strong> <code className="bg-secondary px-1 rounded">https://aesthetic-proof.com/api/v1/generate</code></li>
+                 <li><strong className="text-foreground">URL:</strong> <code className="bg-secondary px-1 rounded">https://aesthetic-proof.gooder.games/api/v1/generate</code></li>
                  <li><strong className="text-foreground">Data:</strong> Pass standard JSON linking your trigger variables (e.g., <code className="bg-secondary px-1 rounded">{"{"} "name": "1. Name", "text": "1. Feedback" {"}"}</code>).</li>
                  <li><strong className="text-foreground">Headers:</strong> Add <code className="bg-secondary px-1 rounded">Authorization</code> mapped to <code className="bg-secondary px-1 rounded">Bearer ap_your_api_key</code>.</li>
                  <li><strong className="text-foreground">Result:</strong> Zapier will output a binary file object which you can pipe directly into a Google Drive folder or a Slack message!</li>

@@ -10,7 +10,7 @@ function cn(...inputs: (string | undefined | null | false)[]) {
 }
 
 const snippets = {
-  bash: `curl -X POST https://api.aesthetic-proof.com/v1/generate \\
+  bash: `curl -X POST https://api.aesthetic-proof.gooder.games/v1/generate \\
   -H "Authorization: Bearer ap_your_secret_key" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -19,7 +19,7 @@ const snippets = {
     "preset": "midnight"
   }' \\
   --output feedback.png`,
-  javascript: `const response = await fetch("https://api.aesthetic-proof.com/v1/generate", {
+  javascript: `const response = await fetch("https://api.aesthetic-proof.gooder.games/v1/generate", {
   method: "POST",
   headers: {
     "Authorization": "Bearer ap_your_secret_key",
@@ -36,7 +36,7 @@ const buffer = await response.arrayBuffer();
 // Save or serve the buffer as a PNG image`,
   python: `import requests
 
-url = "https://api.aesthetic-proof.com/v1/generate"
+url = "https://api.aesthetic-proof.gooder.games/v1/generate"
 headers = {
     "Authorization": "Bearer ap_your_secret_key",
     "Content-Type": "application/json"
