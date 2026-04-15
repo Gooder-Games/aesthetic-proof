@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Aesthetic Proof API
+  version: 1.0.0
+  description: >
+    Generate stunning social proof and testimonial graphics via an edge-rendered API. 
+    Pass in JSON review data and receive a fully styled PNG image to embed in your app.
+  contact:
+    name: Support
+    url: https://aesthetic-proof.com
+servers:
+  - url: 'https://aesthetic-proof.com/api/v1'
+    description: Production Edge API
+paths:
+  /generate:
+    post:
+      summary: Generate Review Image
+      description: Returns a 1200x630 or 840x460 binary PNG image of the testimonial. Consumes 1 credit.
+      operationId: generateReviewImage
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - text
+              properties:
+                name:
+                  type: string
+                  description: The customer's full name.
+                text:
+                  type: string
+                  description: The testimonial or review text.
+                handle:
+                  type: string
+                  description: Social media handle (e.g., @janedoe).
+                avatar_url:
+                  type: string
+                  description: Direct URL to the customer avatar.
+                rating:
+                  type: integer
+                  description: 1-5 star rating.
+                theme:
+                  type: string
+                  enum: [light, dark, transparent]
+                compact:
+                  type: boolean
+                  description: Returns an 840x460 compact image for embedding.
+                preset:
+                  type: string
+                  enum: [midnight, frost, sunset, minimal]
+                styles:
+                  type: object
+                  description: Advanced CSS overrides
+                  properties:
+                    cardBackground:
+                      type: string
+                    textColor:
+                      type: string
+                    secondaryTextColor:
+                      type: string
+                    accentColor:
+                      type: string
+                    borderColor:
+                      type: string
+                    borderRadius:
+                      type: integer
+                    elevation:
+                      type: integer
+      responses:
+        '200':
+          description: OK. Returns the binary PNG stream.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request (Invalid JSON)
+        '401':
+          description: Unauthorized (Invalid or missing API Key)
+        '402':
+          description: Payment Required (Out of credits)
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API Key retrieved from Aesthetic Proof Dashboard. Starts with `ap_`.

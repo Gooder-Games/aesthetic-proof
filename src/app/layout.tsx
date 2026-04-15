@@ -6,8 +6,42 @@ import Navbar from "@/components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aesthetic Proof | Micro-API for Beautiful Review Images",
-  description: "Generate stunning review images for your SaaS with a simple API call.",
+  title: {
+    default: "Aesthetic Proof | Generative Review Images via API",
+    template: "%s | Aesthetic Proof"
+  },
+  description: "Turn boring text reviews into stunning, high-converting social proof graphics with an edge-first generative API.",
+  keywords: ["social proof", "review generator", "testimonial API", "generative UI", "SaaS marketing", "image generation"],
+  authors: [{ name: "Aesthetic Proof Team" }],
+  creator: "Aesthetic Proof",
+  publisher: "Aesthetic Proof",
+  metadataBase: new URL("https://aesthetic-proof.com"),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Aesthetic Proof | Generative Review Images API",
+    description: "Generate stunning review images for your SaaS with a simple API call.",
+    url: "https://aesthetic-proof.com",
+    siteName: "Aesthetic Proof",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aesthetic Proof Preview Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aesthetic Proof | Stunning Review Image API",
+    description: "Turn boring text reviews into stunning graphics with a single API call.",
+    creator: "@AestheticProof",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
