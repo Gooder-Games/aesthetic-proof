@@ -51,6 +51,7 @@ export async function POST(request: Request) {
         },
       ],
       mode: "payment",
+      allow_promotion_codes: true,
       success_url: `${origin}/dashboard?status=success`,
       cancel_url: `${origin}/dashboard?status=cancelled`,
       metadata: {

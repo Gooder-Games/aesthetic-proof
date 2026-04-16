@@ -7,17 +7,14 @@ Turn boring text reviews into stunning graphics via API ✨
 Aesthetic Proof is an edge-rendered micro-API that converts bare JSON testimonials into beautiful, glassmorphic review cards. Perfect for SaaS founders, developers, or Zapier automation fans. Start with 25 free credits!
 
 ## First Comment (Maker's Comment)
-Hey Product Hunt! 👋 I'm [Your Name], the maker of Aesthetic Proof.
+Hey everyone, I'm Civan.
 
-Like many SaaS founders, I spent way too much time opening Figma every time a customer left a glowing review, trying to style it perfectly for my landing page's "Wall of Love" or my Twitter account. It was manual, slow, and annoying.
+I kept finding myself wasting time in Figma just to make nice-looking review cards for my side projects and Twitter. It was a tedious bottleneck, so I built a small API to do it for me instead.
 
-So, I built an API to solve it.
+Aesthetic Proof is simply an endpoint that takes JSON (name, text, rating) and returns a formatted PNG.
 
-Aesthetic Proof takes simple JSON (Name, Text, Rating) and instantly returns a stunning 1200x630 PNG image. 
-Because it runs on an Edge runtime using Satori, it's blazing fast.
+Under the hood, it runs on Vercel Edge using Satori. This means it generates the images dynamically and entirely in memory, without needing to spin up a heavy headless browser like Puppeteer. 
 
-You can use it two ways:
-1. **The Dev Way:** A single POST request (`fetch`/`cURL`) piped straight into your website. (It includes deep CSS override support).
-2. **The Zapier Way:** Hook your Typeform or Stripe up to the Webhooks by Zapier tool, and automate beautiful review image generation completely no-code!
+It's an open-source project, so feel free to check out the repo. You can hit the API directly from your code, or just plug it into Zapier if you don't want to deal with backend routing.
 
-Everyone gets 25 free credits to test the waters. I'd love to hear your feedback, and I'll be hanging around all day answering technical questions about the Edge architecture! 🚀
+I put 25 free credits on every new account so you can test it out without hitting a paywall immediately. I'd really appreciate any feedback on the output quality or the Edge setup. Thanks for checking it out!
